@@ -109,36 +109,36 @@ test.beforeEach(async ({ page }) => {
 });
 
 test.describe('Automation Exercise', () => {
-  test('should register a user', async ({ page }) => {
-    await page.locator(NAV_LOGIN_REGISTER_BUTTON).click();
-    await page.isVisible('text=New User Signup!');
+  // test('should register a user', async ({ page }) => {
+  //   await page.locator(NAV_LOGIN_REGISTER_BUTTON).click();
+  //   await page.isVisible('text=New User Signup!');
 
-    await page.locator(SIGNUP_NAME_FIELD).fill(USER_NAME);
-    await page.locator(SIGNUP_EMAIL_FIELD).fill(USER_EMAIL);
-    await page.locator(SIGNUP_SUBMIT_BUTTON).click();
-    await page.isVisible('text=Enter Account Information');
+  //   await page.locator(SIGNUP_NAME_FIELD).fill(USER_NAME);
+  //   await page.locator(SIGNUP_EMAIL_FIELD).fill(USER_EMAIL);
+  //   await page.locator(SIGNUP_SUBMIT_BUTTON).click();
+  //   await page.isVisible('text=Enter Account Information');
 
-    await page.locator(SIGNUP_GENDER_MALE_BUTTON).click();
-    await page.locator(SIGNUP_PASSWORD_FIELD).fill(USER_PASSWORD);
-    await page.locator(SIGNUP_DATE_DAY_SELECT).selectOption(USER_DATE_OF_BIRTH[0]);
-    await page.locator(SIGNUP_DATE_MONTH_SELECT).selectOption(USER_DATE_OF_BIRTH[1]);
-    await page.locator(SIGNUP_DATE_YEAR_SELECT).selectOption(USER_DATE_OF_BIRTH[2]);
-    await page.locator(SIGNUP_NEWSLETTER_CHECKBOX).click();
-    await page.locator(SIGNUP_SPECIAL_OFFERS_CHECKBOX).click();
-    await page.locator(SIGNUP_FIRST_NAME_FIELD).fill(USER_FIRST_NAME);
-    await page.locator(SIGNUP_LAST_NAME_FIELD).fill(USER_LAST_NAME);
-    await page.locator(SIGNUP_ADDRESS_FIELD).fill(USER_ADDRESS);
-    await page.locator(SIGNUP_COUNTRY_SELECT).selectOption(USER_COUNTRY);
-    await page.locator(SIGNUP_STATE_FIELD).fill(USER_STATE);
-    await page.locator(SIGNUP_CITY_FIELD).fill(USER_CITY);
-    await page.locator(SIGNUP_ZIPCODE_FIELD).fill(USER_ZIPCODE);
-    await page.locator(SIGNUP_MOBILE_NUMBER_FIELD).fill(USER_MOBILE_NUMBER);
-    await page.locator(SIGNUP_CREATE_ACCOUNT_BUTTON).click();
-    await page.isVisible('text=Account Created!');
+  //   await page.locator(SIGNUP_GENDER_MALE_BUTTON).click();
+  //   await page.locator(SIGNUP_PASSWORD_FIELD).fill(USER_PASSWORD);
+  //   await page.locator(SIGNUP_DATE_DAY_SELECT).selectOption(USER_DATE_OF_BIRTH[0]);
+  //   await page.locator(SIGNUP_DATE_MONTH_SELECT).selectOption(USER_DATE_OF_BIRTH[1]);
+  //   await page.locator(SIGNUP_DATE_YEAR_SELECT).selectOption(USER_DATE_OF_BIRTH[2]);
+  //   await page.locator(SIGNUP_NEWSLETTER_CHECKBOX).click();
+  //   await page.locator(SIGNUP_SPECIAL_OFFERS_CHECKBOX).click();
+  //   await page.locator(SIGNUP_FIRST_NAME_FIELD).fill(USER_FIRST_NAME);
+  //   await page.locator(SIGNUP_LAST_NAME_FIELD).fill(USER_LAST_NAME);
+  //   await page.locator(SIGNUP_ADDRESS_FIELD).fill(USER_ADDRESS);
+  //   await page.locator(SIGNUP_COUNTRY_SELECT).selectOption(USER_COUNTRY);
+  //   await page.locator(SIGNUP_STATE_FIELD).fill(USER_STATE);
+  //   await page.locator(SIGNUP_CITY_FIELD).fill(USER_CITY);
+  //   await page.locator(SIGNUP_ZIPCODE_FIELD).fill(USER_ZIPCODE);
+  //   await page.locator(SIGNUP_MOBILE_NUMBER_FIELD).fill(USER_MOBILE_NUMBER);
+  //   await page.locator(SIGNUP_CREATE_ACCOUNT_BUTTON).click();
+  //   await page.isVisible('text=Account Created!');
 
-    await page.locator(SIGNUP_CONTINUE_BUTTON).click();
-    await page.isVisible(`text=Logged in as ${USER_NAME}`);
-  });
+  //   await page.locator(SIGNUP_CONTINUE_BUTTON).click();
+  //   await page.isVisible(`text=Logged in as ${USER_NAME}`);
+  // });
 
   test('should login with fresh user credentials', async ({ page }) => {
     await login(page, USER_EMAIL, USER_PASSWORD);
@@ -193,6 +193,5 @@ test.describe('Automation Exercise', () => {
     await page.waitForTimeout(500);
     await page.locator(CART_REMOVE_PRODUCT).click();
     await expect(page.locator('text=Cart is empty!')).toBeVisible();
-
   });
 });

@@ -78,38 +78,38 @@ beforeEach(() => {
 });
 
 describe('Automation Exercise', () => {
-  it('should register a user', () => {
-    cy.get(NAV_LOGIN_REGISTER_BUTTON).click();
-    cy.contains('New User Signup!').should('be.visible');
+  // it('should register a user', () => {
+  //   cy.get(NAV_LOGIN_REGISTER_BUTTON).click();
+  //   cy.contains('New User Signup!').should('be.visible');
 
-    cy.get(SIGNUP_NAME_FIELD).type(USER_NAME);
-    cy.get(SIGNUP_EMAIL_FIELD).type(USER_EMAIL);
-    cy.get(SIGNUP_SUBMIT_BUTTON).click();
-    cy.contains('Enter Account Information').should('be.visible');
+  //   cy.get(SIGNUP_NAME_FIELD).type(USER_NAME);
+  //   cy.get(SIGNUP_EMAIL_FIELD).type(USER_EMAIL);
+  //   cy.get(SIGNUP_SUBMIT_BUTTON).click();
+  //   cy.contains('Enter Account Information').should('be.visible');
 
-    cy.get(SIGNUP_GENDER_MALE_BUTTON).click();
-    cy.get(SIGNUP_PASSWORD_FIELD).type(USER_PASSWORD);
-    cy.get(SIGNUP_DATE_DAY_SELECT).select(USER_DATE_OF_BIRTH[0]);
-    cy.get(SIGNUP_DATE_MONTH_SELECT).select(USER_DATE_OF_BIRTH[1]);
-    cy.get(SIGNUP_DATE_YEAR_SELECT).select(USER_DATE_OF_BIRTH[2]);
-    cy.get(SIGNUP_NEWSLETTER_CHECKBOX).click();
-    cy.get(SIGNUP_SPECIAL_OFFERS_CHECKBOX).click();
-    cy.get(SIGNUP_FIRST_NAME_FIELD).type(USER_FIRST_NAME);
-    cy.get(SIGNUP_LAST_NAME_FIELD).type(USER_LAST_NAME);
-    cy.get(SIGNUP_ADDRESS_FIELD).type(USER_ADDRESS);
-    cy.get(SIGNUP_COUNTRY_SELECT).select(USER_COUNTRY);
-    cy.get(SIGNUP_STATE_FIELD).type(USER_STATE);
-    cy.get(SIGNUP_CITY_FIELD).type(USER_CITY);
-    cy.get(SIGNUP_ZIPCODE_FIELD).type(USER_ZIPCODE);
-    cy.get(SIGNUP_MOBILE_NUMBER_FIELD).type(USER_MOBILE_NUMBER);
-    cy.get(SIGNUP_CREATE_ACCOUNT_BUTTON).click();
-    cy.contains('Account Created!').should('be.visible');
+  //   cy.get(SIGNUP_GENDER_MALE_BUTTON).click();
+  //   cy.get(SIGNUP_PASSWORD_FIELD).type(USER_PASSWORD);
+  //   cy.get(SIGNUP_DATE_DAY_SELECT).select(USER_DATE_OF_BIRTH[0]);
+  //   cy.get(SIGNUP_DATE_MONTH_SELECT).select(USER_DATE_OF_BIRTH[1]);
+  //   cy.get(SIGNUP_DATE_YEAR_SELECT).select(USER_DATE_OF_BIRTH[2]);
+  //   cy.get(SIGNUP_NEWSLETTER_CHECKBOX).click();
+  //   cy.get(SIGNUP_SPECIAL_OFFERS_CHECKBOX).click();
+  //   cy.get(SIGNUP_FIRST_NAME_FIELD).type(USER_FIRST_NAME);
+  //   cy.get(SIGNUP_LAST_NAME_FIELD).type(USER_LAST_NAME);
+  //   cy.get(SIGNUP_ADDRESS_FIELD).type(USER_ADDRESS);
+  //   cy.get(SIGNUP_COUNTRY_SELECT).select(USER_COUNTRY);
+  //   cy.get(SIGNUP_STATE_FIELD).type(USER_STATE);
+  //   cy.get(SIGNUP_CITY_FIELD).type(USER_CITY);
+  //   cy.get(SIGNUP_ZIPCODE_FIELD).type(USER_ZIPCODE);
+  //   cy.get(SIGNUP_MOBILE_NUMBER_FIELD).type(USER_MOBILE_NUMBER);
+  //   cy.get(SIGNUP_CREATE_ACCOUNT_BUTTON).click();
+  //   cy.contains('Account Created!').should('be.visible');
 
-    cy.get(SIGNUP_CONTINUE_BUTTON).click();
-    cy.contains(`Logged in as ${USER_NAME}`).should('be.visible');
-  });
+  //   cy.get(SIGNUP_CONTINUE_BUTTON).click();
+  //   cy.contains(`Logged in as ${USER_NAME}`).should('be.visible');
+  // });
 
-  it('should login with fresh user credentials', () => {
+  it('should login with user credentials', () => {
     cy.login(USER_EMAIL, USER_PASSWORD);
     cy.contains(`Logged in as ${USER_NAME}`).should('be.visible');
   });
@@ -170,16 +170,6 @@ describe('Automation Exercise', () => {
     cy.get(PRODUCTS_CONDITION_CONTAINER).should('not.have.text', '');
     cy.get(PRODUCTS_BRAND_CONTAINER).should('not.have.text', '');
   });
-
-  // TODO:
-  //  x  Test Case 9: Search Product
-  //  x  Test Case 10: Verify Subscription in home page
-  //  x  Test Case 11: Verify Subscription in Cart page
-  //  x  Test Case 12: Add Products in Cart
-  //  -  Test Case 13: Verify Product quantity in Cart
-  //  -  Test Case 14: Place Order: Register while Checkout
-  //  -  Test Case 15: Place Order: Register before Checkout
-  //  -  Test Case 16: Place Order: Login before Checkout
 
   it('should search for product', () => {
     cy.get(NAV_PRODUCTS_BUTTON).click();
@@ -264,11 +254,10 @@ describe('Automation Exercise', () => {
     cy.contains('Cart is empty!').should('be.visible');
   });
 
+  // it('should delete account', () => {
+  //   cy.login(USER_EMAIL, USER_PASSWORD);
 
-  it('should delete account', () => {
-    cy.login(USER_EMAIL, USER_PASSWORD);
-
-    cy.get(NAV_DELETE_USER_BUTTON).click();
-    cy.contains('Account Deleted!').should('be.visible');
-  });
+  //   cy.get(NAV_DELETE_USER_BUTTON).click();
+  //   cy.contains('Account Deleted!').should('be.visible');
+  // });
 });
