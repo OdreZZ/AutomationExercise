@@ -168,105 +168,6 @@ test.describe('Automation Exercise', () => {
     await expect(page.locator('text=Email Address already exist!')).toBeVisible();
   });
 
-  // test('should send a contact us form with file', async ({ page }) => {
-  //   await page.locator(NAV_CONTACT_US_BUTTON).click();
-  //   await page.contains('Get In Touch').should('be.visible');
-
-  //   await page.locator(CONTACT_US_NAME_FIELD).type(USER_NAME);
-  //   await page.locator(CONTACT_US_EMAIL_FIELD).type(USER_EMAIL);
-  //   await page.locator(CONTACT_US_SUBJECT_FIELD).type('Contact Us Test');
-  //   await page.locator(CONTACT_US_MESSAGE_FIELD).type('Short message');
-  //   await page.locator(CONTACT_US_FILE).attachFile('example.json', { mimeType: 'text/plain' });
-  //   await page.locator(CONTACT_US_SUBMIT_BUTTON).click();
-  //   await page.contains('Success! Your details have been submitted successfully.').should('be.visible');
-  // });
-
-  // test('should navigate to test cases', async ({ page }) => {
-  //   await page.locator(HOME_TEST_CASES_BUTTON).click();
-  //   await page.url().should('include', 'test_cases');
-  // });
-
-  // test('should verify all products and detail page', async ({ page }) => {
-  //   await page.locator(NAV_PRODUCTS_BUTTON).click();
-  //   await page.contains('All Products').should('be.visible');
-
-  //   await page.locator(PRODUCTS_LIST).should('have.length.gte', 5);
-
-  //   await page.locator(PRODUCTS_LIST).first().find(PRODUCTS_VIEW_PRODUCT_BUTTON).click();
-
-  //   await page.locator(PRODUCTS_NAME_CONTAINER).should('not.have.text', '');
-  //   await page.locator(PRODUCTS_CATEGORY_CONTAINER).should('not.have.text', '');
-  //   await page.locator(PRODUCTS_PRICE_CONTAINER).should('not.have.text', '');
-  //   await page.locator(PRODUCTS_AVAILABILITY_CONTAINER).should('not.have.text', '');
-  //   await page.locator(PRODUCTS_CONDITION_CONTAINER).should('not.have.text', '');
-  //   await page.locator(PRODUCTS_BRAND_CONTAINER).should('not.have.text', '');
-  // });
-
-  // // TODO:
-  // //  x  Test Case 9: Search Product
-  // //  x  Test Case 10: Verify Subscription in home page
-  // //  x  Test Case 11: Verify Subscription in Cart page
-  // //  -  Test Case 12: Add Products in Cart
-  // //  -  Test Case 13: Verify Product quantity in Cart
-  // //  -  Test Case 14: Place Order: Register while Checkout
-  // //  -  Test Case 15: Place Order: Register before Checkout
-  // //  -  Test Case 16: Place Order: Login before Checkout
-
-  // test('should search for product', async ({ page }) => {
-  //   await page.locator(NAV_PRODUCTS_BUTTON).click();
-  //   await page.title().should('include', 'All Products');
-
-  //   await page.locator(PRODUCTS_SEARCH_FIELD).type(PRODUCT_SEARCH_TERM);
-  //   await page.locator(PRODUCTS_SEARCH_BUTTON).click();
-
-  //   await page.contains('Searched Products').should('be.visible');
-  //   await page.locator(PRODUCTS_LIST).should('have.length.gte', 1);
-  //   await page.locator(PRODUCTS_LIST).each(($el) => {
-  //     // TODO: Improve
-  //     expect($el.text()).to.include(PRODUCT_SEARCH_TERM);
-  //   });
-  // });
-
-  // test('should verify subscription on home page', async ({ page }) => {
-  //   await page.locator(FOOTER_SUBSCRIPTION_EMAIL_FIELD).type(USER_EMAIL);
-  //   await page.locator(FOOTER_SUBSCRIPTION_BUTTON).click();
-  //   await page.contains('You have been successfully subscribed!').should('be.visible');
-  // });
-
-  // test('should verify subscription on cart page', async ({ page }) => {
-  //   await page.locator(NAV_CART_BUTTON).first().click();
-
-  //   await page.locator(FOOTER_SUBSCRIPTION_EMAIL_FIELD).type(USER_EMAIL);
-  //   await page.locator(FOOTER_SUBSCRIPTION_BUTTON).click();
-  //   await page.contains('You have been successfully subscribed!').should('be.visible');
-  // });
-
-  // test('should add products to cart', async ({ page }) => {
-  //   await page.locator(NAV_PRODUCTS_BUTTON).click();
-
-  //   await page.locator(PRODUCTS_LIST).eq(0).find(PRODUCTS_PRICE_TEXT).invoke('text').then(text => {
-  //     await page.wrap(text).as('firstPrice');
-  //   });
-  //   await page.locator(PRODUCTS_LIST).eq(1).find(PRODUCTS_PRICE_TEXT).invoke('text').then(text => {
-  //     await page.wrap(text).as('secondPrice');
-  //   });
-
-  //   await page.locator(PRODUCTS_LIST).eq(0).find(PRODUCTS_ADD_TO_CART_BUTTON).first().click();
-  //   await page.locator(MODAL_CONTINUE_SHOPPING_BUTTON).click();
-  //   await page.locator(PRODUCTS_LIST).eq(1).find(PRODUCTS_ADD_TO_CART_BUTTON).first().click();
-  //   await page.locator(MODAL_CONTINUE_SHOPPING_BUTTON).click();
-
-  //   await page.locator(NAV_CART_BUTTON).first().click();
-
-  //   await page.locator('@firstPrice').then(firstPrice => {
-  //     await page.locator(CART_PRODUCT_ITEMS).eq(0).find(CART_PRODUCT_PRICE).should('include.text', firstPrice);  
-  //   });
-    
-  //   await page.locator('@secondPrice').then(secondPrice => {
-  //     await page.locator(CART_PRODUCT_ITEMS).eq(1).find(CART_PRODUCT_PRICE).should('include.text', secondPrice);
-  //   });
-  // });
-
   test('should add products to cart of exact quantity', async ({ page }) => {
     const QUANTITY_TO_TEST = 10;
 
@@ -282,7 +183,7 @@ test.describe('Automation Exercise', () => {
     await expect(page.locator(CART_PRODUCT_QUANTITY)).toHaveText(`${QUANTITY_TO_TEST}`);
   });
 
-  test.only('should add product and remove it from cart', async ({ page }) => {
+  test('should add product and remove it from cart', async ({ page }) => {
     await page.locator(HOME_VIEW_PRODUCT).first().click();
     await page.locator(PRODUCT_DETAILS_ADD_TO_CART_BUTTON).click();
 
@@ -294,31 +195,4 @@ test.describe('Automation Exercise', () => {
     await expect(page.locator('text=Cart is empty!')).toBeVisible();
 
   });
-
-  // test('should delete account', async ({ page }) => {
-  //   await page.login(USER_EMAIL, USER_PASSWORD);
-
-  //   await page.locator(NAV_DELETE_USER_BUTTON).click();
-  //   await page.contains('Account Deleted!').should('be.visible');
-  // });
 });
-
-
-
-
-// test('has title', async ({ page }) => {
-//   await page.goto('https://playwright.dev/');
-
-//   // Expect a title "to contain" a substring.
-//   await expect(page).toHaveTitle(/Playwright/);
-// });
-
-// test('get started link', async ({ page }) => {
-//   await page.goto('https://playwright.dev/');
-
-//   // Click the get started link.
-//   await page.getByRole('link', { name: 'Get started' }).click();
-
-//   // Expects page to have a heading with the name of Installation.
-//   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
-// });
