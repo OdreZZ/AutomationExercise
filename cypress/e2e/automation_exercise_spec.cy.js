@@ -251,7 +251,7 @@ describe('Automation Exercise', () => {
     cy.get(CART_PRODUCT_QUANTITY).should('have.text', `${QUANTITY_TO_TEST}`);
   });
 
-  it.only('should add product and remove it from cart', () => {
+  it('should add product and remove it from cart', () => {
     cy.get(HOME_VIEW_PRODUCT).first().click();
     cy.get(PRODUCT_DETAILS_ADD_TO_CART_BUTTON).click();
 
